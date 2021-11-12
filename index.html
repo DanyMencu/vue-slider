@@ -17,26 +17,31 @@
             <div class="images">
                 <!-- genera con vue -->
                 <div class="image-container">
-                    <img src="./img/01.jpg" alt="Lorem">
+                    <img :src="slides[slideActive].image" 
+                    :alt="slides[slideActive].title" />
                     <div class="text">
-                        <h3>Lorem</h3>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.</p>
+                        <h3>{{ slides[slideActive].title }}</h3>
+                        <p>{{ slides[slideActive].text }}</p>
                     </div>
                 </div>
             </div>
-    </div>
-
-        <!-- Thumbnails -->
-        <div class="thumbs">
-            <!-- genera con vue  -->
-            <div class="thumb active">
-                <img src="./img/01.jpg" alt="Lorem">
+            
+            <!-- Thumbnails -->
+            <div class="thumbs">
+                <!-- genera con vue  -->
+                <div v-for= "(slide, index) in slides"
+                class="thumb"
+                :class="{active: index === slideActive}"
+                @click="setSlideActive(index)">
+                    <img :src="slide.image"
+                     :alt="slide.title">
+                </div>
+                
+                <div class="prev" @click="prevSlide" >&uarr;</div>
+                <div class="next" @click="nextSlide" >&darr;</div>
             </div>
-
-            <div class="prev">&uarr;</div>
-            <div class="next">&darr;</div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <script src="./js/main.js"></script>
 </body>

@@ -31,6 +31,29 @@ const root = new Vue ({
                 title:
                     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             },
-        ]
+        ],
+        slideActive: 0,
+    },
+    methods: {
+        //Next slide
+        nextSlide() {
+            this.slideActive++;
+
+            if (this.slideActive > this.slides.length -1 ) {
+                this.slideActive = 0;
+            }
+        },
+        //Prev slide
+        prevSlide() {
+            this.slideActive--;
+
+            if (this.slideActive < 0) {
+                this.slideActive = this.slides.length - 1;
+            }
+        },
+        //Set slide active whit click into the image
+        setSlideActive(slideIndex) {
+            this.slideActive = slideIndex;
+        },
     },
 });
