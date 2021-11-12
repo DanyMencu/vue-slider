@@ -34,6 +34,15 @@ const root = new Vue ({
         ],
         slideActive: 0,
     },
+    created: function() {
+        setInterval ( () => {
+            this.slideActive++;
+
+            if (this.slideActive > this.slides.length -1 ) {
+                this.slideActive = 0;
+            }
+        }, 3000)
+    },
     methods: {
         //Next slide
         nextSlide() {
