@@ -33,15 +33,10 @@ const root = new Vue ({
             },
         ],
         slideActive: 0,
+        autoPlayId: 0,
     },
     created: function() {
-        setInterval ( () => {
-            this.slideActive++;
-
-            if (this.slideActive > this.slides.length -1 ) {
-                this.slideActive = 0;
-            }
-        }, 3000)
+        this.autoPlay();
     },
     methods: {
         //Next slide
@@ -63,6 +58,18 @@ const root = new Vue ({
         //Set slide active whit click into the image
         setSlideActive(slideIndex) {
             this.slideActive = slideIndex;
+        },
+        //Auto play
+        autoPlay() {
+            this.autoPlayId = setInterval ( () => {
+                this.nextSlide();
+            }, 3000);
+        },
+        //Stop autoplay
+        stopAutoPlay(event) {
+            clearInterval (this.autoPlayId);
+
+            event.target.focus();
         },
     },
 });

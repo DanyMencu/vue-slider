@@ -12,7 +12,14 @@
 </head>
 <body>
     <div id="root">
-        <section class="carousel">
+        <section 
+            class="carousel"
+            @mouseenter="stopAutoPlay"
+            @mouseleave="autoPlay"
+            tabindex="1"
+            @keyup.right.down="nextSlide"
+            @keyup.left.up="prevSlide"
+        >
             <!-- Images -->
             <div class="images">
                 <!-- genera con vue -->
